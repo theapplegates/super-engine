@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>{{ title }}</title>
+
+        <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/assets/tailwind.css?v={% version %}"/>
+
+        <link rel="stylesheet" type="text/css" href="/assets/global.css?v={% version %}"/>
+        <link rel="stylesheet" type="text/css" href="/assets/lazy-picture.css?v={% version %}"/>
+        <noscript>
+            <style>
+                noscript {
+                    display: contents;
+                }
+                .lazy-img {
+                    display: none;
+                }
+            </style>
+        </noscript>
+
+        <script defer src="/assets/main.js?v={% version %}"></script>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        {% include "components/header.njk" %}
+
+        <main class="max-w-lg mx-auto">
+            {% block component %}
+                {{ content | safe }}
+            {% endblock %}
+        </main>
+
+        {% include "components/footer.njk" %}
+    </body>
+</html>
